@@ -1,0 +1,120 @@
+@import "variables";
+
+@font-face {
+  font-family: '#{$icomoon-font-family}';
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?11e7i0');
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?11e7i0#iefix') format('embedded-opentype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?11e7i0') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?11e7i0') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?11e7i0##{$icomoon-font-family}') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+.icon {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: '#{$icomoon-font-family}' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon--at-outline {
+  &:before {
+    content: $icon--at-outline; 
+  }
+}
+.icon--at {
+  &:before {
+    content: $icon--at; 
+  }
+}
+.icon--basket-outline {
+  &:before {
+    content: $icon--basket-outline; 
+  }
+}
+.icon--basket {
+  &:before {
+    content: $icon--basket; 
+  }
+}
+.icon--card-outline {
+  &:before {
+    content: $icon--card-outline; 
+  }
+}
+.icon--card {
+  &:before {
+    content: $icon--card; 
+  }
+}
+.icon--cart-outline {
+  &:before {
+    content: $icon--cart-outline; 
+  }
+}
+.icon--cart {
+  &:before {
+    content: $icon--cart; 
+  }
+}
+.icon--cash-outline {
+  &:before {
+    content: $icon--cash-outline; 
+  }
+}
+.icon--cash {
+  &:before {
+    content: $icon--cash; 
+  }
+}
+.icon--checkmark-circle-outline {
+  &:before {
+    content: $icon--checkmark-circle-outline; 
+  }
+}
+.icon--checkmark-circle {
+  &:before {
+    content: $icon--checkmark-circle; 
+  }
+}
+.icon--close-circle-outline {
+  &:before {
+    content: $icon--close-circle-outline; 
+  }
+}
+.icon--close-circle {
+  &:before {
+    content: $icon--close-circle; 
+  }
+}
+.icon--key-outline {
+  &:before {
+    content: $icon--key-outline; 
+  }
+}
+.icon--key {
+  &:before {
+    content: $icon--key; 
+  }
+}
+.icon--lock-outline {
+  &:before {
+    content: $icon--lock-outline; 
+  }
+}
+.icon--lock {
+  &:before {
+    content: $icon--lock; 
+  }
+}
+
