@@ -1,11 +1,11 @@
 "use strict";
 
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const webpack = require("webpack");
 const merge = require("webpack-merge");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const MiniCSSExtractPlugin = require("mini-css-extract-plugin");
 const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
-const CompressionPlugin = require("compression-webpack-plugin");
 const helpers = require("./helpers");
 const commonConfig = require("./webpack.config.common");
 const isProd = process.env.NODE_ENV === "production";
@@ -16,11 +16,22 @@ const environment = isProd
 const webpackConfig = merge(commonConfig(false), {
   mode: "production",
   output: {
-    path: helpers.root("dist"),
-    publicPath: "/",
-    filename: "js/[name].bundle.js"
+    path: helpers.root("public/dist"),
+    publicPath: "/dist/",
+    filename: "js/[name].bundle.[hash:7].js"
+    //filename: 'js/[name].bundle.js'
   },
   optimization: {
+    splitChunks: {
+      cacheGroups: {
+        styles: {
+          name: "styles",
+          test: /\.css$/,
+          chunks: "all",
+          enforce: true
+        }
+      }
+    },
     minimizer: [
       new OptimizeCSSAssetsPlugin({
         cssProcessorPluginOptions: {
@@ -35,9 +46,10 @@ const webpackConfig = merge(commonConfig(false), {
     ]
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new webpack.EnvironmentPlugin(environment),
     new MiniCSSExtractPlugin({
-      filename: "css/[name].css"
+      filename: "css/[name].[hash:7].css"
     })
   ]
 });

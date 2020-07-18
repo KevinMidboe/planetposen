@@ -8,7 +8,7 @@ const helpers = require("./helpers");
 const commonConfig = require("./webpack.config.common");
 const environment = require("./env/dev.env");
 
-const webpackConfig = merge(commonConfig(true), {
+let webpackConfig = merge(commonConfig(true), {
   mode: "development",
   devtool: "cheap-module-eval-source-map",
   output: {
@@ -26,19 +26,29 @@ const webpackConfig = merge(commonConfig(true), {
   plugins: [
     new webpack.EnvironmentPlugin(environment),
     new webpack.HotModuleReplacementPlugin(),
-    new FriendlyErrorsPlugin(),
-    new HtmlPlugin({ template: "frontend/index.html", chunksSortMode: "dependency" })
+    new FriendlyErrorsPlugin()
   ],
   devServer: {
     compress: true,
     historyApiFallback: true,
     hot: true,
     overlay: true,
-    port: 8080,
     stats: {
       normal: true
     }
   }
+});
+
+webpackConfig = merge(webpackConfig, {
+  entry: {
+    main: ["@babel/polyfill", helpers.root("src", "vinlottis-init")]
+  },
+  plugins: [
+    new HtmlPlugin({
+      template: "src/templates/Index.html",
+      chunksSortMode: "dependency"
+    })
+  ]
 });
 
 module.exports = webpackConfig;

@@ -2,18 +2,17 @@
 
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const MiniCSSExtractPlugin = require("mini-css-extract-plugin");
+const HtmlPlugin = require("html-webpack-plugin");
 const helpers = require("./helpers");
-const isDev = process.env.NODE_ENV === "development";
+
+// const {GenerateSW} = require('workbox-webpack-plugin');
 
 const webpackConfig = function(isDev) {
   return {
-    entry: {
-      main: ["@babel/polyfill", helpers.root("frontend", "main")]
-    },
     resolve: {
       extensions: [".js", ".vue"],
       alias: {
-        vue$: isDev ? "vue/dist/vue.runtime.js" : "vue/dist/vue.runtime.min.js",
+        vue$: isDev ? "vue/dist/vue.min.js" : "vue/dist/vue.min.js",
         "@": helpers.root("frontend")
       }
     },
@@ -21,13 +20,22 @@ const webpackConfig = function(isDev) {
       rules: [
         {
           test: /\.vue$/,
-          loader: "vue-loader",
-          include: [helpers.root("frontend")]
+          use: [
+            {
+              loader: "vue-loader",
+              options: {
+                loaders: {
+                  scss: "vue-style-loader!css-loader!sass-loader",
+                  sass: "vue-style-loader!css-loader!sass-loader?indentedSyntax"
+                }
+              }
+            }
+          ]
         },
         {
           test: /\.js$/,
           loader: "babel-loader",
-          include: [helpers.root("frontend")]
+          include: [helpers.root("src")]
         },
         {
           test: /\.css$/,
@@ -52,41 +60,29 @@ const webpackConfig = function(isDev) {
             { loader: "sass-loader", options: { sourceMap: isDev } }
           ]
         },
-        // {
-        //   test: /\.s(c|a)ss$/,
-        //   use: [
-        //     'vue-style-loader',
-        //     'css-loader',
-        //     {
-        //       loader: 'sass-loader',
-        //       // Requires sass-loader@^7.0.0
-        //       options: {
-        //         implementation: require('sass'),
-        //         fiber: require('fibers'),
-        //         indentedSyntax: true // optional
-        //       },
-        //       // Requires sass-loader@^8.0.0
-        //       options: {
-        //         implementation: require('sass'),
-        //         sassOptions: {
-        //           fiber: require('fibers'),
-        //           indentedSyntax: true // optional
-        //         },
-        //       },
-        //     },
-        //   ],
-        // },
         {
           test: /\.woff(2)?(\?[a-z0-9]+)?$/,
-          loader: 'url-loader?limit=10000&mimetype=application/font-woff'
+          loader: "url-loader?limit=10000&mimetype=application/font-woff"
         },
         {
           test: /\.(ttf|eot|svg)(\?[a-z0-9]+)?$/,
-          loader: 'file-loader'
+          loader: "file-loader"
         }
       ]
     },
-    plugins: [new VueLoaderPlugin()]
+    plugins: [
+      new VueLoaderPlugin(),
+      // new GenerateSW({
+      //   swSrc: "./public/service-worker.js",
+      //   swDest: './sw.js',
+      //   clientsClaim: true,
+      //   skipWaiting: true,
+      //   runtimeCaching: [{
+      //     urlPattern: new RegExp('https://www.google-analytics.com/analytics.js'),
+      //     handler: 'StaleWhileRevalidate'
+      //   }]
+      // })
+    ]
   };
 };
 
