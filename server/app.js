@@ -23,7 +23,11 @@ router.get('/product/:id', productsController.productById)
 router.post('/product', productsController.addNewProduct)
 
 router.post('/variation/:id', variationsController.addNewVariationToProduct);
+
+app.use("/public", express.static(path.join(__dirname, "public")));
+app.use("/dist", express.static(path.join(__dirname, "/../public/dist")));
 app.use('/api', router);
+app.use('/', (req, res) => res.sendFile(path.join(__dirname + "/../public/index.html")));
 
 console.log(`Planetposen backend running on port: ${PORT}`)
 server.listen(PORT);
