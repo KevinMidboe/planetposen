@@ -1,8 +1,70 @@
 
-$green: #5cdb95;
+$green: #3b945e;
 $text-color: #05386B;
 
+$tablet-width: 1200px;
 $mobile-width: 768px;
+
+:root {
+  --color-highlight: #D5F5E3;
+
+  --color-green: #28B463;
+  --color-pink: #F0729F;
+  --color-yellow: #F4D03F;
+  --color-blue: #77A5BD;
+
+  --color-background-pink: #F8CED1;
+  --color-background-yellow: #F9E79F;
+  --color-background-green: #D5F5E3;
+  --color-background-blue: #BBD2DE;
+ 
+  --color-background: #19171A;
+  --color-background-highlight: #272527;
+}
+
+:root {
+  --font-primary: 'Mabry', sans-serif;
+  --font-secondary: serif;
+  --text-base-size: 1em;
+  --text-scale-ratio: 1.45;
+  --text-xs: calc(1em /(var(--text-scale-ratio) * var(--text-scale-ratio)));
+  --text-sm: calc(1em / var(--text-scale-ratio));
+  --text-md: calc(1em * var(--text-scale-ratio));
+  --text-lg: calc(1em * var(--text-scale-ratio) * var(--text-scale-ratio));
+  --text-xl: calc(1em * var(--text-scale-ratio) * var(--text-scale-ratio) * var(--text-scale-ratio));
+  --text-xxl: calc(1em * var(--text-scale-ratio) * var(--text-scale-ratio) * var(--text-scale-ratio) * var(--text-scale-ratio));
+  --text-xxxl: calc(1em * var(--text-scale-ratio) * var(--text-scale-ratio) * var(--text-scale-ratio) * var(--text-scale-ratio) * var(--text-scale-ratio));
+  --heading-line-height: 1.2;
+  --body-line-height: 1.4;
+}
+:root {
+  --btn-font-size: 1.125em;
+  --btn-sm: calc(var(--btn-font-size) - 0.1em);
+  --btn-md: calc(var(--btn-font-size) + 0.2em);
+  --btn-lg: calc(var(--btn-font-size) + 0.4em);
+  --btn-radius: 4px;
+}
+
+:root {
+  --space-unit: 1.125em;
+  --space-xxs: calc(0.25 * var(--space-unit));
+  --space-xs: calc(0.5 * var(--space-unit));
+  --space-sm: calc(0.75 * var(--space-unit));
+  --space: calc(1 * var(--space-unit));
+  --space-md: calc(1.25 * var(--space-unit));
+  --space-lg: calc(2 * var(--space-unit));
+  --space-xl: calc(3.25 * var(--space-unit));
+  --space-xxl: calc(5.25 * var(--space-unit));
+  --space-xxxl: calc(8.5 * var(--space-unit));
+  --space-xxxxl: calc(12 * var(--space-unit));
+  --component-padding: var(--space-xl)
+}
+
+@mixin tablet {
+  @media (max-width: #{$tablet-width}) {
+    @content;
+  }
+}
 
 @mixin mobile {
   @media (max-width: #{$mobile-width}) {
