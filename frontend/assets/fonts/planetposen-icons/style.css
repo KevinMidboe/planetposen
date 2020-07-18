@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'planetposen-icons';
-  src:  url('fonts/planetposen-icons.eot?11e7i0');
-  src:  url('fonts/planetposen-icons.eot?11e7i0#iefix') format('embedded-opentype'),
-    url('fonts/planetposen-icons.ttf?11e7i0') format('truetype'),
-    url('fonts/planetposen-icons.woff?11e7i0') format('woff'),
-    url('fonts/planetposen-icons.svg?11e7i0#planetposen-icons') format('svg');
+  src:  url('fonts/planetposen-icons.eot?km2c2k');
+  src:  url('fonts/planetposen-icons.eot?km2c2k#iefix') format('embedded-opentype'),
+    url('fonts/planetposen-icons.ttf?km2c2k') format('truetype'),
+    url('fonts/planetposen-icons.woff?km2c2k') format('woff'),
+    url('fonts/planetposen-icons.svg?km2c2k#planetposen-icons') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,42 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon--arrow-back:before {
+  content: "\e90a";
+}
+.icon--arrow-down:before {
+  content: "\e90d";
+}
+.icon--arrow-dropdown-circle:before {
+  content: "\e90e";
+}
+.icon--arrow-dropdown:before {
+  content: "\e90f";
+}
+.icon--arrow-dropleft-circle:before {
+  content: "\e910";
+}
+.icon--arrow-dropleft:before {
+  content: "\e911";
+}
+.icon--arrow-dropright-circle:before {
+  content: "\e912";
+}
+.icon--arrow-dropright:before {
+  content: "\e915";
+}
+.icon--arrow-dropup-circle:before {
+  content: "\e916";
+}
+.icon--arrow-dropup:before {
+  content: "\e917";
+}
+.icon--arrow-forward:before {
+  content: "\e918";
+}
+.icon--arrow-up:before {
+  content: "\e919";
+}
 .icon--at-outline:before {
   content: "\e90b";
 }
