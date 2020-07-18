@@ -14,6 +14,21 @@ let routes = [
     path: '/cart',
     component: (resolve) => require(['./components/Cart.vue'], resolve)
   },
+  {
+    name: 'About',
+    path: '/about',
+    component: (resolve) => require(['./components/About.vue'], resolve)
+  },
+  {
+    name: 'Shop',
+    path: '/shop',
+    component: (resolve) => require(['./components/Shop.vue'], resolve)
+  },
+  {
+    name: 'admin',
+    path: '/admin',
+    component: (resolve) => require(['./components/Admin.vue'], resolve)
+  },
   // {
   //   name: 'styleguide',
   //   path: '/styleguide',

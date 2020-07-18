@@ -1,0 +1,130 @@
+<template>
+  <div class="product-card">
+    <div class="product-card-container">
+
+      <div class="image">
+        <img :src="product.image" />
+      </div>
+
+      <div class="content" :class="color">
+        <div class="content-top">
+          <router-link :to="'edit/' + product.urlSlug">
+            <h3 class="h3-alt">{{ product.name }}</h3>
+          </router-link>
+        </div>
+        <div class="content-bottom">
+          <div class="content-bottom-info">
+            <div><b>I dag</b></div>
+            <div>18.juli</div>
+            <div><b>19:30</b></div>
+            <div>Hovedscenen</div>
+          </div>
+
+          <div class="content-bottom-actions">
+            <Button :small="true" :color="color">Add to cart</Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import Button from '@/components/ui/Button';
+
+export default {
+  components: { Button },
+  props: {
+    product: {
+      type: Object,
+      default: null,
+      required: false
+    } 
+  },
+  computed: {
+    color() {
+      const r = Math.random();
+
+      if (r < 0.25)
+        return 'green';
+      else if (r < 0.5)
+        return 'pink';
+      else if (r < 0.75)
+        return 'blue';
+      else
+        return 'yellow';
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+@import '../../styles/variables';
+
+.product-card {
+  position: relative;
+  height: 100%;
+
+  &-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .image img {
+      border-radius: 6px 6px 0 0;
+      max-height: 250px;
+      object-fit: cover;
+
+      width: 100%;
+      float: left;
+    }
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+ 
+  margin-top: -1px;
+  border-radius: 0 0 6px 6px;
+  color: black;
+
+  &.pink {
+    background-color: var(--color-background-pink);
+  }
+  &.green {
+    background-color: var(--color-background-green);
+  }
+  &.yellow {
+    background-color: var(--color-background-yellow);
+  }
+  &.blue {
+    background-color: var(--color-background-blue);
+  }
+
+
+  &-top {
+    padding: var(--space-md);
+
+    h3 {
+      font-weight: 400;
+    }
+  }
+
+  &-bottom {
+    > div {
+      padding: var(--space-md);
+    }
+
+    &-info {
+  
+    }
+
+    &-actions {
+      border-top: 1px solid rgba(0,0,0,0.1);
+    }
+  }
+}
+</style>
