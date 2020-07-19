@@ -12,7 +12,7 @@
         </div>
 
         <div>
-          <img src="https://planet.kevinmidboe.com/no/Hjem_files/shapeimage_3.png" />
+          <img src="https://planetposen.no/no/Hjem_files/shapeimage_3.png" />
         </div>
       </div>
     </div> 
