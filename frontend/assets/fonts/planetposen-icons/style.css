@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'planetposen-icons';
-  src:  url('fonts/planetposen-icons.eot?km2c2k');
-  src:  url('fonts/planetposen-icons.eot?km2c2k#iefix') format('embedded-opentype'),
-    url('fonts/planetposen-icons.ttf?km2c2k') format('truetype'),
-    url('fonts/planetposen-icons.woff?km2c2k') format('woff'),
-    url('fonts/planetposen-icons.svg?km2c2k#planetposen-icons') format('svg');
+  src:  url('fonts/planetposen-icons.eot?x3hpe6');
+  src:  url('fonts/planetposen-icons.eot?x3hpe6#iefix') format('embedded-opentype'),
+    url('fonts/planetposen-icons.ttf?x3hpe6') format('truetype'),
+    url('fonts/planetposen-icons.woff?x3hpe6') format('woff'),
+    url('fonts/planetposen-icons.svg?x3hpe6#planetposen-icons') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -13,7 +13,7 @@
 .icon {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'planetposen-icons' !important;
-  speak: none;
+  speak: never;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
@@ -25,6 +25,21 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon--add-circle-outline:before {
+  content: "\e91d";
+}
+.icon--add-circle:before {
+  content: "\e91c";
+}
+.icon--add:before {
+  content: "\e91e";
+}
+.icon--analytics-outline:before {
+  content: "\e91a";
+}
+.icon--analytics:before {
+  content: "\e91b";
+}
 .icon--arrow-back:before {
   content: "\e90a";
 }
