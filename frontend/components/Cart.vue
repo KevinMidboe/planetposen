@@ -94,7 +94,10 @@
             </tbody>
           </table>
 
-          <Button color="blue" :scaleRotate="true">Gå til kassen</Button>
+        </div>
+        <div class="checkout-actions margin-top--lg">
+          <applePay />
+          <Button color="green" :small="true" :scaleRotate="true">Gå til kassen</Button>
         </div>
       </section>
     </div>
@@ -106,12 +109,14 @@
 import store from '@/store';
 import Picker from '@/components/ui/Picker'
 import Button from '@/components/ui/Button'
+import applePay from '@/components/ui/applePay';
 
 export default {
   name: 'Cart',
   components: {
     Picker,
-    Button
+    Button,
+    applePay
   },
   computed: {
     cartInventory() {
@@ -129,6 +134,7 @@ export default {
 
 <style lang="scss" scoped>
 @import 'frontend/styles/variables';
+@import 'frontend/styles/spacing';
 
 .checkout {
   @include desktop {
@@ -300,6 +306,12 @@ table {
 .cart {
   width: 95%;
   margin: 0 auto;
+}
+
+.checkout-actions {
+  > *:not(last-of-type) {
+    margin-bottom: 1rem;
+  }
 }
 
 .header {
