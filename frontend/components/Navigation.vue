@@ -1,6 +1,8 @@
 <template>
   <header :class="{ dark: showDarkText }">
     <div class="main col-wrap max-width">
+
+      <!-- Desktop menu -->
       <div class="main-content" v-if="!isMobile">
         <div class="logo">
           <router-link to="/">
@@ -16,13 +18,16 @@
 
         <ul class="secondary-nav-items">
           <li v-for="item in rightNavItems">
-            <router-link :to="item.link" class="">
-              <i v-if="item.icon" :class="'icon ' + item.icon"></i>
-              <span v-else>{{ item.name }}</span>
+            <router-link :to="item.link">
+              <span>{{ item.name }}</span>
             </router-link>
           </li>
+
+          <cart :isDark="showDarkText" />
         </ul>
       </div>
+
+      <!-- Mobile menu -->
       <div class="main-content" v-else>
         <div>
           <router-link to="/">
@@ -31,6 +36,8 @@
         </div>
 
         <div class="menu">
+          <cart :isDark="showDarkText" />
+
           <div class="menu-toggle" :class="{ active: showMenu }" @click="showMenu = !showMenu">
             <span v-if="!showMenu">Menu</span>
             <span v-else>Close menu</span>
@@ -44,7 +51,7 @@
                   <h4>{{ item.name }}</h4>
                   <i class="icon icon--arrow-forward"></i>
                 </router-link>
-              </li>                
+              </li>
             </ul>
           </div>
         </div>
@@ -55,10 +62,11 @@
 
 <script>
 import logo from '@/components/ui/logo';
+import cart from '@/components/ui/cart';
 
 export default {
   name: 'Navigation',
-  components: { logo },
+  components: { logo, cart },
   data() {
     return {
       showDarkText: false,
@@ -78,10 +86,6 @@ export default {
       rightNavItems: [{
         name: 'Admin',
         link: '/admin'
-      },{
-        name: 'Cart',
-        link: '/cart',
-        icon: 'icon--basket-outline'
       }]
     }
   },
@@ -163,10 +167,6 @@ a, span {
   }
 }
 
-.icon {
-  font-size: 1.5rem;
-}
-
 .main-nav-items, .secondary-nav-items {
   display: flex;
   flex-direction: row;
@@ -180,11 +180,12 @@ a, span {
 
 
 .menu {
+  display: flex;
+
   &-toggle {
-    display: flex;
-    justify-content: flex-end;
     position: relative;
     z-index: 2;
+    margin-left: 1rem;
 
     &.active span {
       border-bottom: 2px solid white;
