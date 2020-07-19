@@ -6,8 +6,7 @@
         <h1>Handlekurv</h1>
       </div>
 
-
-      <table cellspaceing="0" class="cart-inventory">
+      <table cellspaceing="0" class="cart-inventory desktop-only">
         <thead>
           <tr>
             <th>Product</th>
@@ -33,6 +32,36 @@
                  tabindex="0"
                  :title="'Remove product: ' + product.name"></i>
               </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table cellspaceing="0" class="cart-inventory--mobile mobile-only">
+        <tbody v-for="product in cartInventory">
+          <tr>
+            <th>Product</th>
+            <td class="name-and-image">
+              <img :src="product.image" />
+              <span>{{ product.name }}</span>
+            </td>
+          </tr>
+          <tr>
+            <th>Price</th>
+            <td>38.99 NOK</td>
+          </tr>
+          <tr>
+            <th>Quantity</th>
+            <td>2</td>
+          </tr>
+          <tr>
+            <th>Delsum</th>
+            <td>77.99 NOK</td>
+          </tr>
+          <tr class="remove-row">
+            <th></th>
+            <td>
+              <Button color="pink" @click="removeFromCart(product)" :xs="true">Fjern produkt</Button>
             </td>
           </tr>
         </tbody>
@@ -131,6 +160,20 @@ table.cart-inventory {
     }
   }
 
+  @include tablet {
+    table-layout: auto;
+
+    th:first-of-type {
+      width: 40%;
+    }
+    th:not(:first-of-type) {
+      width: 15%;
+    }
+    th:last-of-type {
+      width: 20%;
+    }
+  }
+
   .name-and-image {
     display: flex;
     align-items: center;
@@ -165,11 +208,54 @@ table.cart-inventory {
   }
 }
 
+table.cart-inventory--mobile {
+  table-layout: auto;
+
+  td {
+    text-align: right;
+  }
+
+  th::after {
+    content: ':';
+  }
+
+  tbody:nth-of-type(even) {
+    background-color: var(--color-background-highlight);
+  }
+
+  tbody:last-of-type tr:last-of-type {
+    th, td {
+      border: 0px solid;
+    }
+  }
+
+  .name-and-image {
+    img {
+      display: none;
+      width: 150px;
+    }
+  }
+
+  .remove-row {
+    td {
+      padding: 0.4rem;
+    }
+
+    th::after {
+      content: '';
+    }
+  }
+}
+
 .checkout-summary table {
   tr:last-of-type {
     th, td {
       border-bottom: 0px solid;
     }
+  }
+
+  th {
+    width: 35%;
   }
 
   .frakt p {
@@ -185,6 +271,10 @@ table {
 
   font-size: 1.2em;
 
+  @include mobile {
+    font-size: 1.1em;
+  }
+
   tr th, tr td {
     border-bottom: 2px solid rgba(255,255,255,.1);
   }
@@ -194,7 +284,6 @@ table {
   }
 
   th {
-    width: 35%;
     text-align: left;
     vertical-align: top;
   }
