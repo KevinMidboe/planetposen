@@ -6,7 +6,8 @@
         <p>Det Andre Teatrets faste stall med utøvere – improvisatorer med lang fartstid og stor kompetanse. De holder kurs for næringslivet, spiller forestillinger på arbeidsplassen din, dukker opp på film og tv, og spiller i nesten samtlige av husets forestillinger.</p>
       </div>
       <div v-if="products && products.length" class="products">
-          <product-card v-for="product in products" :product="product" />
+        <add-card />
+        <product-card v-for="product in products" :product="product" />
       </div>
 
       <span v-else>
@@ -18,9 +19,10 @@
 
 <script>
 import ProductCard from '@/components/ui/ProductCard';
+import AddCard from '@/components/ui/AddCard';
 
 export default {
-  components: { ProductCard },
+  components: { ProductCard, AddCard },
   data() {
     return {
       products: []
@@ -41,6 +43,7 @@ export default {
   max-width: 840px;
   margin: auto;
   text-align: center;
+  padding: 1.5rem 0 3rem 0;
 }
 
 .products {
