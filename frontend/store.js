@@ -1,13 +1,12 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-
-import playerModule from '@/modules/playerModule';
-
 Vue.use(Vuex);
+
+import cartModule from '@/modules/cartModule';
 
 const store = new Vuex.Store({
   modules: {
-    playerModule
+    cartModule
   }
 })
 
