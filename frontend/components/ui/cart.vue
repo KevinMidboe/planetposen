@@ -1,6 +1,10 @@
 
 <template>
-  <router-link to="/cart" class="cart" :class="{ dark: isDark }">
+  <router-link to="/cart"
+               class="cart"
+               :title="cartTitle"
+               :class="{ dark: isDark, offScreen: isHeaderOffScreen }">
+
     <div class="cart-counter">
       {{ cartInventory.length }}
     </div>
@@ -20,12 +24,28 @@ export default {
   },
   data() {
     return {
-      cartItems: [0,0,0,0]
+      isHeaderOffScreen: false
     }
+  },
+  mounted() {
+    let observer = new IntersectionObserver((entry, observer) => {
+      if (this.$route.name == 'Shop') {
+        const isHeaderIntersecting = entry[0].isIntersecting;
+        this.isHeaderOffScreen = !isHeaderIntersecting;
+      } else {
+        this.isHeaderOffScreen = false;
+      }
+    })
+
+    observer.observe(document.querySelector('#header'))
   },
   computed: {
     cartInventory() {
       return store.getters['cartModule/inventory']
+    },
+    cartTitle() {
+      let len = this.cartInventory.length;
+      return `Cart with ${ len } products`
     }
   }
 }
@@ -48,6 +68,17 @@ export default {
     height: min-content;
 
     margin-right: 0.5rem;
+  }
+
+  &.offScreen {
+    position: fixed;
+    top: 0.5rem;
+    right: -6px;
+    padding: 0.5rem;
+    padding-right: 2.5rem;
+    background-color: var(--color-background);
+    border-radius: 6px;
+    border: 0px solid !important;
   }
 
   &:hover {
