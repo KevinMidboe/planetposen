@@ -4,7 +4,7 @@
   font-family: "Mabry";
   font-style: normal;
   font-weight: 400;
-  src: url("/frontend/assets/fonts/mabry/Mabry-Regular-Pro.woff") format("woff");
+  src: url("assets/fonts/mabry/Mabry-Regular-Pro.woff") format("woff");
 }
 
 body {
@@ -117,6 +117,22 @@ h3 {
   @include mobile {
     margin-top: 2rem; 
   }
+}
+
+
+
+// Colors
+.bg-green {
+  background-color: var(--color-background-green);
+}
+.bg-pink {
+  background-color: var(--color-background-pink);
+}
+.bg-yellow {
+  background-color: var(--color-background-yellow);
+}
+.bg-blue {
+  background-color: var(--color-background-blue);
 }
 
 
