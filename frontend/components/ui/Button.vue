@@ -15,6 +15,11 @@ export default {
       default: false,
       required: false
     },
+    xs: {
+      type: Boolean,
+      default: false,
+      required: false
+    },
     scaleRotate: {
       type: Boolean,
       default: false
@@ -28,6 +33,8 @@ export default {
         classNames.push('scale-rotate')
       if (this.small)
         classNames.push('small');
+      if (this.xs)
+        classNames.push('xs');
       if (this.color)
         classNames.push(this.color);
       return classNames.join(' ');
@@ -55,6 +62,11 @@ button {
   &.small {
     padding: var(--space-sm) var(--space-md);
     font-size: var(--btn-sm);
+  }
+
+  &.xs {
+    padding: var(--space-xs) var(--space-sm);
+    font-size: var(--btn-xs);
   }
 
   @media(hover: hover) and (pointer: fine) {
