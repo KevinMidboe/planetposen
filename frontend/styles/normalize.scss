@@ -12,6 +12,8 @@ a {
 button {
   cursor: pointer;
   -webkit-appearance: unset;
+  margin: 0;
+  font-family: inherit;
 
   // disable-dbl-tap-zoom
   touch-action: manipulation;
