@@ -1,5 +1,5 @@
 <template>
-  <header :class="{ dark: showDarkText }">
+  <header :class="{ dark: showDarkText }" id="header">
     <div class="main col-wrap max-width">
 
       <!-- Desktop menu -->
