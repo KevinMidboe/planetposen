@@ -6,7 +6,7 @@
         <img :src="product.image" />
       </div>
 
-      <div class="content" :class="color">
+      <div class="content" :class="'bg-' + color">
         <div class="content-top">
           <router-link :to="'edit/' + product.urlSlug">
             <h3 class="h3-alt">{{ product.name }}</h3>
@@ -21,7 +21,7 @@
           </div>
 
           <div class="content-bottom-actions">
-            <Button :small="true" :color="color">Add to cart</Button>
+            <Button :small="true" :color="color" @click="addItemToCart">Add to cart</Button>
           </div>
         </div>
       </div>
@@ -30,6 +30,7 @@
 </template>
 
 <script>
+import store from '@/store'
 import Button from '@/components/ui/Button';
 
 export default {
@@ -37,22 +38,29 @@ export default {
   props: {
     product: {
       type: Object,
-      default: null,
-      required: false
+      required: true
     } 
   },
-  computed: {
-    color() {
-      const r = Math.random();
+  data() {
+    return {
+      color: null
+    }
+  },
+  beforeMount() {
+    const r = Math.random();
 
-      if (r < 0.25)
-        return 'green';
-      else if (r < 0.5)
-        return 'pink';
-      else if (r < 0.75)
-        return 'blue';
-      else
-        return 'yellow';
+    if (r < 0.25)
+      this.color = 'green';
+    else if (r < 0.5)
+      this.color = 'pink';
+    else if (r < 0.75)
+      this.color = 'blue';
+    else
+      this.color = 'yellow';
+  },
+  methods: {
+    addItemToCart() {
+      store.dispatch('cartModule/addItemToCart', this.product);
     }
   }
 }
@@ -85,25 +93,10 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
  
   margin-top: -1px;
   border-radius: 0 0 6px 6px;
   color: black;
-
-  &.pink {
-    background-color: var(--color-background-pink);
-  }
-  &.green {
-    background-color: var(--color-background-green);
-  }
-  &.yellow {
-    background-color: var(--color-background-yellow);
-  }
-  &.blue {
-    background-color: var(--color-background-blue);
-  }
-
 
   &-top {
     padding: var(--space-md);
