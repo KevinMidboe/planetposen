@@ -24,7 +24,16 @@
             </td>
             <td>38.99 NOK</td>
             <td>2</td>
-            <td>77.99 NOK</td>
+            <td class="sum-and-remove">
+              <span>77.99 NOK</span>
+              <i class="icon icon--close-circle"
+                 @click="removeFromCart(product)"
+                 @keyup.enter="removeFromCart(product)"
+                 role="button"
+                 tabindex="0"
+                 :title="'Remove product: ' + product.name"></i>
+              </button>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -132,6 +141,15 @@ table.cart-inventory {
       height: 40px;
       border-radius: 4px;
     }
+  }
+
+  .sum-and-remove i {
+    float: right;
+    margin-top: -1px;
+    font-size: var(--text-md);
+    color: var(--color-pink);
+
+    cursor: pointer;
   }
 
   thead tr th {
