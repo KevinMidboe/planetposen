@@ -38,11 +38,11 @@ const webpackConfig = merge(commonConfig(false), {
           preset: ["default", { discardComments: { removeAll: true } }]
         }
       }),
-      new UglifyJSPlugin({
-        cache: true,
-        parallel: false,
-        sourceMap: !isProd
-      })
+//      new UglifyJSPlugin({
+//        cache: true,
+//        parallel: false,
+//        sourceMap: !isProd
+//      })
     ]
   },
   plugins: [
