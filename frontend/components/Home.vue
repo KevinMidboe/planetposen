@@ -8,7 +8,9 @@
             <p>Kjøp en pose for verden</p>
           </div>
         
-          <Button color='yellow' :scaleRotate="true">View items for sale</Button>
+          <router-link to="/shop">
+            <Button color='yellow' :scaleRotate="true">View items for sale</Button>
+          </router-link>
         </div>
 
         <div>
