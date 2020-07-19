@@ -33,7 +33,7 @@ export default {
     if (window.location.href.includes('localhost'))
       url = 'http://localhost:30010'.concat(url)
 
-    fetch('http://localhost:30010/api/products')
+    fetch(url)
       .then(resp => resp.json())
       .then(products => this.products = products)
   }
