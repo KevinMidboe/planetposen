@@ -1,5 +1,5 @@
 <template>
-  <button :class="computedClass"><slot></slot></button>
+  <button :class="computedClass" @click="$emit('click')"><slot></slot></button>
 </template>
 
 <script>
@@ -57,8 +57,10 @@ button {
     font-size: var(--btn-sm);
   }
 
-  &.scale-rotate:hover {
-    transform: rotate(4deg) scale(1.05);
+  @media(hover: hover) and (pointer: fine) {
+    &.scale-rotate:hover {
+      transform: rotate(4deg) scale(1.05);
+    }
   }
 
   &.black {
