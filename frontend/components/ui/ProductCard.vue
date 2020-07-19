@@ -60,7 +60,7 @@ export default {
   },
   methods: {
     addItemToCart() {
-      store.dispatch('cartModule/addItemToCart', this.product);
+      store.dispatch('cartModule/addItemToCart', { ...this.product });
     }
   }
 }
