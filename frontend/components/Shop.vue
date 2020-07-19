@@ -6,7 +6,7 @@
         <p>New bags are on sale every monday. Grab one now while they're in stock!</p>
       </div>
       <div v-if="products && products.length" class="products">
-          <product-card v-for="product in products" :product="product" />
+        <product-card v-for="product in products" :product="product" />
       </div>
 
       <span v-else>
@@ -27,7 +27,11 @@ export default {
     }
   },
   created() {
-    fetch('http://localhost:30010/api/products')
+    let url = '/api/products';
+    if (window.location.href.includes('localhost'))
+      url = 'http://localhost:30010'.concat(url)
+
+    fetch(url)
       .then(resp => resp.json())
       .then(products => this.products = products)
       .then(_ => this.products = this.products.concat(this.products))
