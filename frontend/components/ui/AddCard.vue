@@ -1,7 +1,7 @@
 
 <template>
   <div class="product-card">
-    <router-link to="/add">
+    <router-link to="/add" title="Add new product">
       <i class="icon icon--add-circle"></i>
     </router-link>
 
