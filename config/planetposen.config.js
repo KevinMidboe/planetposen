@@ -3,7 +3,7 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const helpers = require("./helpers");
 
-const VinlottisConfig = {
+const PlanetposenConfig = {
   entry: {
     planetposen: ["@babel/polyfill", helpers.root("frontend", "main")]
   },
@@ -25,4 +25,4 @@ const VinlottisConfig = {
   }
 };
 
-module.exports = VinlottisConfig;
+module.exports = PlanetposenConfig;

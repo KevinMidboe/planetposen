@@ -41,11 +41,11 @@ let webpackConfig = merge(commonConfig(true), {
 
 webpackConfig = merge(webpackConfig, {
   entry: {
-    main: ["@babel/polyfill", helpers.root("src", "vinlottis-init")]
+    main: ["@babel/polyfill", helpers.root("frontend", "main")]
   },
   plugins: [
     new HtmlPlugin({
-      template: "src/templates/Index.html",
+      template: "frontend/index.html",
       chunksSortMode: "dependency"
     })
   ]
