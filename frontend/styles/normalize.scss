@@ -12,4 +12,7 @@ a {
 button {
   cursor: pointer;
   -webkit-appearance: unset;
+
+  // disable-dbl-tap-zoom
+  touch-action: manipulation;
 }
