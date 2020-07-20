@@ -26,7 +26,10 @@ router.post('/variation/:id', variationsController.addNewVariationToProduct);
 
 app.use("/public", express.static(path.join(__dirname, "public")));
 app.use("/dist", express.static(path.join(__dirname, "/../public/dist")));
+app.use('/.well-known', express.static(path.join(__dirname, "/../frontend/assets/well-known")));
+
 app.use('/api', router);
+
 app.use('/', (req, res) => res.sendFile(path.join(__dirname + "/../public/index.html")));
 
 console.log(`Planetposen backend running on port: ${PORT}`)
