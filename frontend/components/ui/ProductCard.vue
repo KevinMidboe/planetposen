@@ -40,7 +40,11 @@ export default {
     product: {
       type: Object,
       required: true
-    } 
+    },
+    to: {
+      type: String,
+      required: false
+    }
   },
   data() {
     return {
@@ -64,7 +68,7 @@ export default {
       store.dispatch('cartModule/addItemToCart', { ...this.product });
     },
     viewProduct() {
-      this.$router.push('/shop/' + this.product.urlSlug)
+      this.$router.push(this.to ? this.to : '/shop/' + this.product.urlSlug)
     }
   }
 }
