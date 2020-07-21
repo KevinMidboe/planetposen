@@ -18,4 +18,5 @@ export default {
 @import './styles/normalize';
 @import './styles/icons';
 @import './styles/global';
+@import './styles/layout';
 </style>

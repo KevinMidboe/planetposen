@@ -27,9 +27,14 @@ export default {
       isHeaderOffScreen: false
     }
   },
+  watch: {
+    $route(to, from) {
+      this.isHeaderOffScreen = false;
+    }
+  },
   mounted() {
     let observer = new IntersectionObserver((entry, observer) => {
-      if (this.$route.name == 'Shop') {
+      if (this.$route.path.includes('shop')) {
         const isHeaderIntersecting = entry[0].isIntersecting;
         this.isHeaderOffScreen = !isHeaderIntersecting;
       } else {
@@ -52,6 +57,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '/frontend/styles/variables';
+
 .cart {
   display: flex;
   flex-direction: row;
@@ -75,10 +82,18 @@ export default {
     top: 0.5rem;
     right: -6px;
     padding: 0.5rem;
-    padding-right: 2.5rem;
+    padding-right: 1.5rem;
     background-color: var(--color-background);
     border-radius: 6px;
     border: 0px solid !important;
+
+    .icon {
+      color: white;
+    }
+
+    @include desktop {
+      top: 1.5rem;
+    }
   }
 
   &:hover {

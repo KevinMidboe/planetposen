@@ -93,4 +93,10 @@ button {
   }
 }
 
+button .icon {
+  position: relative;
+  top: 2.5px;
+  right: -8px;
+}
+
 </style>
