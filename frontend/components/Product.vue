@@ -66,7 +66,7 @@ export default {
 
     const productSlug = this.$route.params.slug
 
-    let url = `/api/products/${ productSlug }`;
+    let url = `/api/product/${ productSlug }`;
     if (window.location.href.includes('localhost'))
       url = 'http://localhost:30010'.concat(url)
 
