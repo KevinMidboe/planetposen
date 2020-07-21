@@ -66,7 +66,11 @@ export default {
 
     const productSlug = this.$route.params.slug
 
-    fetch(`http://localhost:30010/api/product/${ productSlug }`)
+    let url = `/api/products/${ productSlug }`;
+    if (window.location.href.includes('localhost'))
+      url = 'http://localhost:30010'.concat(url)
+
+    fetch(url)
       .then(resp => resp.json())
       .then(product => this.product = product);
   },
