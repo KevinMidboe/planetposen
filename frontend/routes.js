@@ -30,6 +30,11 @@ let routes = [
     component: (resolve) => require(['./components/Shop.vue'], resolve)
   },
   {
+    name: 'Contact',
+    path: '/contact',
+    component: (resolve) => require(['./components/Contact.vue'], resolve)
+  },
+  {
     name: 'admin',
     path: '/admin',
     component: (resolve) => require(['./components/Admin.vue'], resolve)
