@@ -20,6 +20,11 @@ let routes = [
     component: (resolve) => require(['./components/About.vue'], resolve)
   },
   {
+    name: 'Shop product view',
+    path: '/shop/:slug',
+    component: (resolve) => require(['./components/Product.vue'], resolve)
+  },
+  {
     name: 'Shop',
     path: '/shop',
     component: (resolve) => require(['./components/Shop.vue'], resolve)

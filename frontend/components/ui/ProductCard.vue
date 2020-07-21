@@ -22,6 +22,7 @@
 
           <div class="content-bottom-actions">
             <Button :small="true" :color="color" @click="addItemToCart">Add to cart</Button>
+            <Button :small="true" color="yellow" @click="viewProduct">View<i class="icon icon--arrow-forward"></i></Button>
           </div>
         </div>
       </div>
@@ -61,13 +62,16 @@ export default {
   methods: {
     addItemToCart() {
       store.dispatch('cartModule/addItemToCart', { ...this.product });
+    },
+    viewProduct() {
+      this.$router.push('/shop/' + this.product.urlSlug)
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-@import '../../styles/variables';
+@import '/frontend/styles/variables';
 
 .product-card {
   position: relative;
@@ -117,6 +121,8 @@ export default {
 
     &-actions {
       border-top: 1px solid rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
     }
   }
 }
