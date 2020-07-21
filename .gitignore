@@ -3,6 +3,7 @@ node_modules/
 public/
 
 server/config.js
+server/assets/*
 
 # exclude everything
 frontend/assets/well-known/*
