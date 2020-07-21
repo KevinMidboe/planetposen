@@ -1,3 +1,9 @@
 .DS_Store
 node_modules/
 public/
+
+# exclude everything
+frontend/assets/well-known/*
+
+# exception to the rule
+!frontend/assets/well-known/.gitkeep 
