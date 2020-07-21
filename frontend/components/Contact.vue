@@ -1,6 +1,6 @@
 <template>
   <main role="main">
-    <div class="banner blue-background">
+    <div class="banner bg-blue">
       <div class="banner-content top-show col-wrap max-width">
         <h1>Kontakt oss</h1>
 
@@ -55,30 +55,39 @@ export default {
   height: 100%;
   width: 100%;
 
-  &.blue-background {
-    background-color: var(--color-background-blue);
-    color: black;
-  }
+  color: black;
 
   &-content {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
 
     padding-top: var(--space-xxxxl);
 
-    p {
-      font-size: var(--text-md);
+    @include mobile {
+      padding-top: var(--space-xxl);
     }
 
-    @include mobile {
-      flex-direction: column-reverse;
+    p {
+      font-size: var(--text-md);
     }
   }
 }
 
 section.contact {
-  margin: 6rem auto 0 auto;
+  margin: 3rem auto;
+  overflow: auto;
+
+  h3 {
+    margin-top: 2rem;
+  }
+}
+
+@include mobile {
+  .col-6 {
+    width: 100%;
+  }
 }
 
 img {
