@@ -207,10 +207,25 @@ table.cart-inventory {
   }
 
   thead tr th {
-    border-bottom: 2px solid rgba(255,255,255,.1);
+    border-bottom: 2px solid rgba(0,0,0,.1);
 
     &:not(:last-of-type) {
-      border-right: 2px solid rgba(255,255,255,.1);
+      border-right: 2px solid rgba(0,0,0,0.1);
+    }
+  }
+
+  thead th:first-of-type {
+    border-top-left-radius: 6px;
+  }
+  thead th:last-of-type {
+    border-top-right-radius: 6px;
+  }
+  tbody tr:last-of-type {
+    td:first-of-type {
+      border-bottom-left-radius: 6px;
+    }
+    td:last-of-type {
+      border-bottom-right-radius: 6px;
     }
   }
 
@@ -276,28 +291,33 @@ table.cart-inventory--mobile {
 
 table {
   width: 100%;
-  border: 1px solid rgba(255,255,255,.1);
+  border: 1px solid rgba(0,0,0,.1);
   border-radius: 6px;
   margin-bottom: 1.5rem;
 
   font-size: 1.2em;
+
+//  background-color: white;
+  color: var(--color-background);
 
   @include mobile {
     font-size: 1.1em;
   }
 
   tr th, tr td {
-    border-bottom: 2px solid rgba(255,255,255,.1);
+    border-bottom: 2px solid rgba(0,0,0,.1);
   }
 
   th, td {
     padding: 0.75rem 1rem;
+    background-color: white;
   }
 
   th {
     text-align: left;
     vertical-align: top;
   }
+
 }
 
 .page-header {
