@@ -39,6 +39,16 @@ let routes = [
     path: '/admin',
     component: (resolve) => require(['./components/Admin.vue'], resolve)
   },
+  {
+    name: 'Add',
+    path: '/add',
+    component: (resolve) => require(['./components/editProduct.vue'], resolve)
+  },
+  {
+    name: 'Edit',
+    path: '/edit/:slug',
+    component: (resolve) => require(['./components/editProduct.vue'], resolve)
+  }
   // {
   //   name: 'styleguide',
   //   path: '/styleguide',

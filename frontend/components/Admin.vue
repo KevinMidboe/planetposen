@@ -7,7 +7,9 @@
       </div>
       <div v-if="products && products.length" class="products">
         <add-card />
-        <product-card v-for="product in products" :product="product" />
+        <product-card v-for="product in products"
+                      :product="product"
+                      :to="'/edit/' + product.urlSlug" :key="Math.random()" />
       </div>
 
       <span v-else>

@@ -21,9 +21,11 @@ app.use(express.json());
 // app.use(express.urlencoded());
 
 router.get('/products', productsController.allProducts)
+router.get('/product/schema', productsController.getProductSchema)
 router.get('/product/:slug', productsController.productBySlug)
 router.post('/product', productsController.addNewProduct)
 
+router.get('/variation/schema', variationsController.getVariationSchema)
 router.post('/variation/:id', variationsController.addNewVariationToProduct);
 
 router.post('/applepay/validateSession', applePayController.validateSession)

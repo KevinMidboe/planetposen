@@ -58,7 +58,11 @@ export default {
       })
     },
     makeIntent() {
-      fetch('/api/stripe/create-payment-intent', {
+      let url = '/api/stripe/create-payment-intent';
+      if (window.location.href.includes('localhost'))
+        url = 'http://localhost:30010'.concat(url)
+
+      fetch(url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
