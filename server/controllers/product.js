@@ -24,17 +24,17 @@ const allProducts = (req, res) => {
     .then(products => res.json(products))
 }
 
-const productById = (req, res) => {
-  const { id } = req.params;
+const productBySlug = (req, res) => {
+  const { slug } = req.params;
 
-  if (id != null) {
-    return products.getById(id)
-      .then(product => handleReturnProduct(product, res))
+  if (slug != null) {
+    return products.getBySlug(slug)
+      .then(product => res.json({ ...product._doc }))
       .catch(err => handleError(err, res))
   } else {
     return res.status(422).send({
       success: true,
-      message: 'Id must be number. Invalid request.'
+      message: 'Product slug name must be included. Invalid request.'
     })
   }
 }
@@ -48,6 +48,6 @@ const addNewProduct = (req, res) => {
 
 module.exports = {
   allProducts,
-  productById,
+  productBySlug,
   addNewProduct
 };

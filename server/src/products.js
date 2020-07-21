@@ -29,8 +29,8 @@ class Products {
     return Product.find().populate('variations');
   }
 
-  getById(id) {
-    return Product.findById(id).populate('variations');
+  getBySlug(slug) {
+    return Product.findOne({ urlSlug: slug }).populate('variations');
   }
 }
 

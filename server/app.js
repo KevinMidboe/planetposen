@@ -21,7 +21,7 @@ app.use(express.json());
 // app.use(express.urlencoded());
 
 router.get('/products', productsController.allProducts)
-router.get('/product/:id', productsController.productById)
+router.get('/product/:slug', productsController.productBySlug)
 router.post('/product', productsController.addNewProduct)
 
 router.post('/variation/:id', variationsController.addNewVariationToProduct);
