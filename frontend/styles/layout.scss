@@ -1,0 +1,174 @@
+:root {
+    --width-1: 8.33%;
+    --width-2: 16.66%;
+    --width-3: 25%;
+    --width-4: 33.33%;
+    --width-5: 41.66%;
+    --width-6: 50%;
+    --width-7: 58.33%;
+    --width-8: 66.66%;
+    --width-9: 75%;
+    --width-10: 83.33%;
+    --width-11: 91.66%;
+    --width-12: 100%
+}
+
+.col-1 {
+    width:var(--width-1)
+}
+
+.col-2 {
+    width:var(--width-2)
+}
+
+.col-3 {
+    width:var(--width-3)
+}
+
+.col-4 {
+    width:var(--width-4)
+}
+
+.col-5 {
+    width:var(--width-5)
+}
+
+.col-6 {
+    width:var(--width-6)
+}
+
+.col-7 {
+    width:var(--width-7)
+}
+
+.col-8 {
+    width:var(--width-8)
+}
+
+.col-9 {
+    width:var(--width-9)
+}
+
+.col-10 {
+    width:var(--width-10)
+}
+
+.col-11 {
+    width:var(--width-11)
+}
+
+.col-12 {
+    width:var(--width-12)
+}
+
+.offset-1 {
+    margin-left:var(--width-1)
+}
+
+.offset-2 {
+    margin-left:var(--width-2)
+}
+
+.offset-3 {
+    margin-left:var(--width-3)
+}
+
+.offset-4 {
+    margin-left:var(--width-4)
+}
+
+.offset-5 {
+    margin-left:var(--width-5)
+}
+
+.offset-6 {
+    margin-left:var(--width-6)
+}
+
+.offset-7 {
+    margin-left:var(--width-7)
+}
+
+.offset-8 {
+    margin-left:var(--width-8)
+}
+
+.offset-9 {
+    margin-left:var(--width-9)
+}
+
+.offset-10 {
+    margin-left:var(--width-10)
+}
+
+.offset-11 {
+    margin-left:var(--width-11)
+}
+
+.offset-12 {
+    margin-left:var(--width-12)
+}
+
+.col-wrap {
+    padding-left: 120px;
+    padding-right:120px
+}
+
+@media (max-width: 1280px) {
+    .col-wrap {
+        padding-left: 64px;
+        padding-right:64px
+    }
+}
+
+@media (max-width: 992px) {
+    .col-wrap {
+        padding-left: 48px;
+        padding-right:48px
+    }
+}
+
+@media (max-width: 768px) {
+    .col-wrap {
+        padding-left: 32px;
+        padding-right:32px
+    }
+}
+
+@media (max-width: 520px) {
+    .col-wrap {
+        padding-left: 12px;
+        padding-right: 12px
+    }
+}
+
+.col-wrap [class*="col-"] {
+    float: left;
+    padding-left: 32px;
+    padding-right: 32px;
+    box-sizing: border-box
+}
+
+@media (max-width: 992px) {
+    .col-wrap [class*="col-"] {
+        padding-left: 16px;
+        padding-right:16px
+    }
+}
+
+@media (max-width: 520px) {
+    .col-wrap [class*="col-"] {
+        padding-left: 8px;
+        padding-right:8px
+    }
+}
+/*
+.col-wrap::after {
+    content: "";
+    visibility: hidden;
+    display: block;
+    height: 0;
+    clear:both
+}
+*/
+
