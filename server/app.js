@@ -14,6 +14,8 @@ const PORT = 30010;
 
 const productsController = require('./controllers/product.js');
 const variationsController = require('./controllers/variation.js');
+const applePayController = require('./controllers/applePay.js');
+const stripeController = require('./controllers/stripe.js');
 
 app.use(express.json());
 // app.use(express.urlencoded());
@@ -23,6 +25,10 @@ router.get('/product/:id', productsController.productById)
 router.post('/product', productsController.addNewProduct)
 
 router.post('/variation/:id', variationsController.addNewVariationToProduct);
+
+router.post('/applepay/validateSession', applePayController.validateSession)
+router.post('/applepay/pay', applePayController.pay)
+router.post('/stripe/create-payment-intent', stripeController.createPaymentIntent)
 
 app.use("/public", express.static(path.join(__dirname, "public")));
 app.use("/dist", express.static(path.join(__dirname, "/../public/dist")));

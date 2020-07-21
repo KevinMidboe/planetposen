@@ -97,6 +97,9 @@
         </div>
         <div class="checkout-actions margin-top--lg">
           <applePay />
+
+          <stripe />
+
           <Button color="green" :small="true" :scaleRotate="true">Gå til kassen</Button>
         </div>
       </section>
@@ -110,13 +113,15 @@ import store from '@/store';
 import Picker from '@/components/ui/Picker'
 import Button from '@/components/ui/Button'
 import applePay from '@/components/ui/applePay';
+import stripe from '@/components/stripe';
 
 export default {
   name: 'Cart',
   components: {
     Picker,
     Button,
-    applePay
+    applePay,
+    stripe
   },
   computed: {
     cartInventory() {
