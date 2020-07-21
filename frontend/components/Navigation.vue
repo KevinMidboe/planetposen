@@ -74,14 +74,14 @@ export default {
       showMenu: false,
 
       leftNavItems: [{
-        name: 'Program',
-        link: '/',
+        name: 'Gaveposer',
+        link: '/shop'
       },{
         name: 'Om oss',
         link: '/about'
       },{
-        name: 'Gaveposer',
-        link: '/shop'
+        name: 'Kontakt oss',
+        link: '/contact'
       }],
       rightNavItems: [{
         name: 'Admin',
@@ -108,7 +108,7 @@ export default {
   methods: {
     knownLightBackgroundPage() {
       const location = window.location.href.split('#')[1]
-      return location == '/'; 
+      return location == '/' || location == '/contact' || location.includes('/shop/');
     }
   }
 }
