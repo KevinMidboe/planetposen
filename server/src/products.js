@@ -1,5 +1,6 @@
 const Product = require('schemas/Product');
-const { slugify } = require('src/utils');
+const Variation = require('schemas/Variation');
+const { slugify, nulledSchema } = require('src/utils');
 
 class Products {
   constructor() {
@@ -27,6 +28,13 @@ class Products {
 
   allProducts() {
     return Product.find().populate('variations');
+  }
+
+  productSchema() {
+    const product = { ...Product.schema.obj };
+    const productSchema = nulledSchema(product);
+
+    return Promise.resolve(productSchema);
   }
 
   getBySlug(slug) {

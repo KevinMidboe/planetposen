@@ -1,4 +1,5 @@
 const Variation = require('schemas/Variation');
+const { nulledSchema } = require('src/utils');
 
 const updateVariation = () => {
   return
@@ -17,6 +18,15 @@ const saveNewVariation = async (variation) => {
   return newVariation;
 }
 
+const variationSchema = () => {
+  const variation = { ...Variation.schema.obj };
+  const variationSchema = nulledSchema(variation);
+
+  return Promise.resolve(variationSchema);
+}
+
+
 module.exports = {
-  saveNewVariation
+  saveNewVariation,
+  variationSchema
 }

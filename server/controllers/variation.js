@@ -1,4 +1,4 @@
-const { saveNewVariation } = require('src/variation.js')
+const { saveNewVariation, variationSchema } = require('src/variation.js')
 const Products = require('src/products');
 const products = new Products();
 
@@ -35,6 +35,13 @@ const addNewVariationToProduct = async (req, res) => {
     .catch(err => handleError(err, res))
 }
 
+
+const getVariationSchema = (req, res) => {
+  return variationSchema()
+    .then(schema => res.json(schema))
+}
+
 module.exports = {
-  addNewVariationToProduct
+  addNewVariationToProduct,
+  getVariationSchema
 };

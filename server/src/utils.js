@@ -14,6 +14,12 @@ const slugify = (string) => {
     .replace(/-+$/, '') // Trim - from end of text
 }
 
+const nulledSchema = schema => Object.keys(schema).reduce((accumulator, current) => {
+  accumulator[current] = "";
+  return accumulator;
+}, {});
+
 module.exports = {
-  slugify
+  slugify,
+  nulledSchema
 }

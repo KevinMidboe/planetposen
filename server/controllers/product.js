@@ -46,8 +46,14 @@ const addNewProduct = (req, res) => {
     .then(resp => res.send(resp))
 }
 
+const getProductSchema = (req, res) => {
+  return products.productSchema()
+    .then(schema => res.json(schema))
+}
+
 module.exports = {
   allProducts,
   productBySlug,
-  addNewProduct
+  addNewProduct,
+  getProductSchema
 };
