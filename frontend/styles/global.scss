@@ -41,6 +41,9 @@ h3 {
     font-size: calc(0.785 * var(--text-lg));
   }
 }
+h4 {
+  font-size: var(--text-md);
+}
 
 .flex {
   display: flex;
@@ -74,6 +77,12 @@ h3 {
   .desktop-only {
     display: none;
   }
+}
+
+
+.pos-abs {
+  position: absolute;
+  z-index: 10;
 }
 
 
@@ -117,6 +126,7 @@ h3 {
 
   @include mobile {
     padding-top: var(--space-xl);
+    padding-bottom: var(--space-xl);
   }
 }
 
