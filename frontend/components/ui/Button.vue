@@ -1,5 +1,5 @@
 <template>
-  <button :class="computedClass" @click="$emit('click')"><slot></slot></button>
+  <button :class="computedClass" @click="$emit('click')" :disabled="disabled"><slot></slot></button>
 </template>
 
 <script>
@@ -23,13 +23,18 @@ export default {
     scaleRotate: {
       type: Boolean,
       default: false
+    },
+    disabled: {
+      type: Boolean,
+      required: false,
+      default: false
     }
   },
   computed: {
     computedClass() {
       let classNames= [];
 
-      if (this.scaleRotate)
+      if (this.scaleRotate && !this.disabled)
         classNames.push('scale-rotate')
       if (this.small)
         classNames.push('small');
@@ -94,9 +99,13 @@ button {
 }
 
 button .icon {
-  position: relative;
-  top: 2.5px;
-  right: -8px;
+  vertical-align: middle;
+  margin-left: 0.3rem;
+  font-size: 1.4em;
+}
+
+button[disabled], button:disabled {
+  cursor: not-allowed;
 }
 
 </style>
