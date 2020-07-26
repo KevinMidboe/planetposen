@@ -6,6 +6,7 @@ const Product = new Schema({
   image: String,
   description: String,
   urlSlug: String,
+  color: String,
   variations: [{
     type: Schema.Types.ObjectId,
     ref: "Variation"

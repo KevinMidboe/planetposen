@@ -20,6 +20,7 @@ class Products {
       name: product.name,
       description: product.description,
       urlSlug: slugify(product.name),
+      color: product.color,
       image: product.image
     })
 
