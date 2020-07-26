@@ -1,5 +1,5 @@
 <template>
-  <product :product="product" />
+  <product v-if="product" :product="product" />
 </template>
 
 <script>
