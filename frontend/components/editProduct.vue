@@ -75,8 +75,6 @@
                   <size-picker :sizeVariable.sync="variation.size" />
                 </div>
               </div>
-
-              <hr />
             </div>
           </div>
 
@@ -237,6 +235,12 @@ button {
 
 .variation {
   display: flex;
+  padding: 1rem 0;
+  width: max-content;
+
+  &:not(:last-of-type) {
+    border-bottom: 2px solid black;
+  }
 }
 
 .variation-controls {
