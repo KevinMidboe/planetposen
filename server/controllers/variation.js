@@ -27,8 +27,6 @@ const addNewVariationToProduct = async (req, res) => {
   console.log('id: ', productId);
   console.log('variation: ', variation);
 
-  const newVariation = await saveNewVariation(variation);
-  
   return saveNewVariation(variation)
     .then(newVariation => products.addVariationToProduct(newVariation, productId))
     .then(() => res.send('New relation added to product'))
