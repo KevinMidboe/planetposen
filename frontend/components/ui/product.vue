@@ -1,6 +1,6 @@
 <template>
   <main role="main" v-if="product">
-    <div class="banner padding-bottom--lg" :class="'bg-' + color">
+    <div class="banner padding-bottom--lg" :class="'bg-' + product.color">
       <div class="banner-content top-show-sm col-wrap max-width">
         <h1>{{ product.name }}</h1>
       </div>
@@ -16,14 +16,17 @@
         </div>
         <div class="col-6 details">
           <div class="pricing">
-            <span :class="{ sale: selectedVariation.discount }">24.99 kr</span>
-            <span v-if="selectedVariation.discount">19.99 kr</span>
+            <span :class="{ sale: selectedVariation.discount }">
+              {{ selectedVariation.price }} kr
+            </span>
+            <span v-if="selectedVariation.discount">
+              {{ selectedVariation.discount }} kr</span>
           </div>
 
           <p v-if="product.description">{{ product.description }}</p>
           <p v-else class="description">Notatbøkene fra All Pine Press er trykket i Oslo og papir fra Hellefoss Paper AS i Hokksund. (Notatbøkene er uten linjer)</p>
 
-          <div class="stock" v-if="inStock">
+          <div class="stock" v-if="selectedVariation.stock > 0">
             <i class="icon icon--checkmark-circle"></i>
             På lager
           </div>
@@ -34,10 +37,19 @@
 
           <div class="actions">
           <!-- Variation picker -->
+            Size:
+            <size-picker class="variationPicker" :sizes="availableSizes"
+                         @selectedSize="sizeSelected" :sizeVariable="selectedVariation.size" />
 
           <!-- Amount picker -->
+
+            <div v-if="selectedVariation.stock > 0">
+              Quantity:
+              <input type="number" value="1" min="1" :max="selectedVariation.stock" />
+            </div>
           <!-- Buy button -->
-            <Button color="black" :small="true" @click="addToCart" :scaleRotate="true">Add to cart</Button>
+
+            <Button color="black" :small="true" @click="addToCart" :scaleRotate="true" :disabled="selectedVariation.stock == 0">Add to cart</Button>
           </div>
 
           <div class="meta">
@@ -53,10 +65,11 @@
 
 <script>
 import Button from '@/components/ui/Button';
+import SizePicker from '@/components/ui/sizePicker';
 import store from '@/store'
 
 export default {
-  components: { Button },
+  components: { Button, SizePicker },
   props: {
     product: {
       type: Object,
@@ -66,10 +79,16 @@ export default {
   data() {
     return {
       placeholderWidth: '0px',
-      color: Math.random() > 0.5 ? 'yellow' : 'blue',
-      inStock: Math.random() > 0.5,
+      availableSizes: undefined,
       selectedVariation: { discount: Math.random() > 0.5 ? true : false }
     }
+  },
+  beforeMount() {
+    this.selectedVariation = this.product.variations[0];
+
+    if (this.product.variations.length)
+      this.availableSizes = this.product.variations.map(el => el.size)
+
   },
   mounted() {
     setTimeout(this.squareImagePlaceholder, 10);
@@ -83,10 +102,20 @@ export default {
           this.color = this.product.color;
         if (newVal.image == '')
           setTimeout(this.squareImagePlaceholder, 10); 
+        if (this.product.variations.length) {
+          this.availableSizes = this.product.variations.map(el => el.size)
+
+          if (this.selectedVariation == undefined)
+            this.selectedVariation = this.product.variations[0];
+        }
       }
     }
   },
   methods: {
+    sizeSelected(size) {
+      const variationIndex = this.product.variations.findIndex(variation => variation.size == size)
+      this.selectedVariation = this.product.variations[variationIndex];
+    },
     addToCart() {
       store.dispatch('cartModule/addItemToCart', { ...this.product });
     },
@@ -165,12 +194,32 @@ h1 {
   }
 
   .pricing {
-    font-size: 2rem;
+    font-size: 3rem;
 
     & .sale {
       text-decoration: line-through;
       color: gray;
     }
+  }
+}
+
+button {
+  margin-top: 1rem;
+}
+
+.variationPicker {
+  margin-bottom: 1rem;
+}
+
+input {
+  border-width: 4px;
+  border-color: black;
+  padding: 0.5rem;
+  font-size: 2rem;
+  display: block;
+
+  &[type=number] {
+    width: 5rem;
   }
 }
 
