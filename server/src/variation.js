@@ -11,7 +11,7 @@ const saveNewVariation = async (variation) => {
     description: variation.description,
     stock: variation.stock || 0,
     price: variation.price,
-    discount: null
+    discount: variation.discount || null
   })
 
   await newVariation.save();
