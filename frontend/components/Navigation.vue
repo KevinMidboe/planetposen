@@ -5,7 +5,7 @@
       <!-- Desktop menu -->
       <div class="main-content" v-if="!isMobile">
         <div class="logo">
-          <router-link to="/">
+          <router-link to="/" class="noHover">
             <logo :isDark="showDarkText"/>
           </router-link>
         </div>
@@ -124,11 +124,13 @@ header {
   z-index: 10;
   color: black;
   width: 100%;
+}
 
-  &.dark a, &.dark span {
+.dark {
+  a, span {
     color: var(--color-background);
 
-    &:hover {
+    &:hover:not(.noHover) {
       border-color: var(--color-background) !important;
     }
   }
@@ -162,7 +164,7 @@ a, span {
   border-bottom: 2px solid transparent;
   cursor: pointer;
 
-  &:hover {
+  &:hover:not(.noHover) {
     border-bottom: 2px solid white;
   }
 }
