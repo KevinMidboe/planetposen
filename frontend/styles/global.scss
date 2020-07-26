@@ -142,17 +142,20 @@ h4 {
 // Colors
 .bg-green {
   background-color: var(--color-background-green);
+  border-color: var(--color-green);
 }
 .bg-pink {
   background-color: var(--color-background-pink);
+  border-color: var(--color-pink);
 }
 .bg-yellow {
   background-color: var(--color-background-yellow);
+  border-color: var(--color-yellow);
 }
 .bg-blue {
   background-color: var(--color-background-blue);
+  border-color: var(--color-blue);
 }
-
 
 .accent--xl {
     font-size:calc(1.375 * var(--text-base-size))
