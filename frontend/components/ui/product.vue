@@ -8,13 +8,16 @@
 
     <section class="product padding-top--lg">
       <div class="max-width col-wrap">
+        <!-- image -->
         <div class="col-6 image-preview">
           <img v-if="product.image" :src="product.image" />
           <div v-else role="image" aria-label="no image" class="image-placeholder" ref="placeholder">
             <h3>(no image)</h3>
           </div>
         </div>
+
         <div class="col-6 details">
+          <!-- pricing -->
           <div class="pricing">
             <span :class="{ sale: selectedVariation.discount }">
               {{ selectedVariation.price }} kr
@@ -23,9 +26,11 @@
               {{ selectedVariation.discount }} kr</span>
           </div>
 
+          <!-- description -->
           <p v-if="product.description">{{ product.description }}</p>
           <p v-else class="description">Notatbøkene fra All Pine Press er trykket i Oslo og papir fra Hellefoss Paper AS i Hokksund. (Notatbøkene er uten linjer)</p>
 
+          <!-- in-stock -->
           <div class="stock" v-if="selectedVariation.stock > 0">
             <i class="icon icon--checkmark-circle"></i>
             På lager
@@ -35,23 +40,22 @@
             Utsolgt
           </div>
 
-          <div class="actions">
+
           <!-- Variation picker -->
-            Size:
-            <size-picker class="variationPicker" :sizes="availableSizes"
-                         @selectedSize="sizeSelected" :sizeVariable="selectedVariation.size" />
+          Size:
+          <size-picker class="variationPicker" :sizes="availableSizes"
+                       @selectedSize="sizeSelected" :sizeVariable="selectedVariation.size" />
 
-          <!-- Amount picker -->
-
-            <div v-if="selectedVariation.stock > 0">
-              Quantity:
-              <input type="number" value="1" min="1" :max="selectedVariation.stock" />
-            </div>
-          <!-- Buy button -->
-
-            <Button color="black" :small="true" @click="addToCart" :scaleRotate="true" :disabled="selectedVariation.stock == 0">Add to cart</Button>
+          <!-- Quantity picker -->
+          <div v-if="selectedVariation.stock > 0">
+            Quantity:
+            <quantity-picker :max="selectedVariation.stock" />
           </div>
 
+          <!-- Buy button -->
+          <Button color="green" :small="true" @click="addToCart" :scaleRotate="true" :disabled="selectedVariation.stock == 0">Add to cart</Button>
+
+          <!-- meta -->
           <div class="meta">
             <span class="categories">
               Kategorier:
@@ -66,10 +70,11 @@
 <script>
 import Button from '@/components/ui/Button';
 import SizePicker from '@/components/ui/sizePicker';
+import QuantityPicker from '@/components/ui/quantityPicker';
 import store from '@/store'
 
 export default {
-  components: { Button, SizePicker },
+  components: { Button, SizePicker, QuantityPicker },
   props: {
     product: {
       type: Object,
@@ -173,7 +178,7 @@ h1 {
   margin-top: 1rem;
   font-size: 1.3rem;
 
-  > div, > p {
+  > * {
     margin-bottom: 2.25rem;
   }
 
@@ -201,10 +206,6 @@ h1 {
       color: gray;
     }
   }
-}
-
-button {
-  margin-top: 1rem;
 }
 
 .variationPicker {
