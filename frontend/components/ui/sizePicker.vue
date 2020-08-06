@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <div class="size-box" :class="{ selected: selectedSize == size }"
-         v-for="size in sizes" @click="sizeSelected(size)">
+         v-for="size in sizes" @click="sizeSelected(size)" tabindex="0" @keyup.enter="sizeSelected(size)">
       <i class="icon icon--bug"></i>
       <span>{{ size }}</span>
     </div>
