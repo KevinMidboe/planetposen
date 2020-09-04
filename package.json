@@ -15,7 +15,7 @@
     "@stripe/stripe-js": "^1.8.0",
     "mongoose": "^5.9.24",
     "node-fetch": "^2.6.0",
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.13.1",
     "stripe": "^8.76.0",
     "vue": "~2.6",
     "vue-router": "~3.0",
