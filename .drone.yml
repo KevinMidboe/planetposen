@@ -26,13 +26,13 @@ steps:
       - drone-test
     status: success
   settings:
-    host: 10.0.0.114
+    host: planetposen.schleppe
     username: root
     key:
       from_secret: ssh_key
     command_timeout: 600s
     script:
-      - /home/kevin/deploy/planetposen.sh
+      - /home/kevin/deploy.sh
 
 trigger:
   branch:
